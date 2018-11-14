@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+	<include
+		resource="org/springframework/boot/logging/logback/base.xml" />
+	<property name="LOG_DIR" value="logs" />
+	<!-- <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender"> 
+		<encoder> <pattern> %d{dd-MM-yyyy HH:mm:ss.SSS} %magenta([%thread]) %highlight(%-5level) 
+		%logger.%M - %msg%n </pattern> </encoder> </appender> <appender name="SAVE-TO-FILE" 
+		class="ch.qos.logback.core.FileAppender"> <file>${LOG_DIR}/log.log</file> 
+		<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder"> <Pattern> 
+		%d{dd-MM-yyyy HH:mm:ss.SSS} [%thread] %-5level %logger{36}.%M - %msg%n </Pattern> 
+		</encoder> </appender> -->
+
+	<springProfile name="DEV,TB1,TB2">
+		<root level="info">
+			<appender-ref ref="CONSOLE" />
+			<appender-ref ref="FILE" />
+		</root>
+		<logger name="org.greeneyed.multimybatisdemo"
+			additivity="true" level="debug">
+			<!--
+			root의 appender 를 사용함  두번찍히는거X 
+			<appender-ref ref="CONSOLE" />
+            <appender-ref ref="FILE" />
+			 -->
+		</logger>
+	</springProfile>
+
+	<springProfile name="PROD">
+		<root level="info">
+			<appender-ref ref="FILE" />
+		</root>
+		<logger name="org.greeneyed.multimybatisdemo"
+			additivity="true" level="error">
+            <appender-ref ref="FILE" />
+		</logger>
+	</springProfile>
+
+</configuration>

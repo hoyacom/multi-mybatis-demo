@@ -1,11 +1,47 @@
-datasources:
- one:
-  jdbcUrl: jdbc:h2:mem:h2Testdb
-  username: sa
-  password: 
-  maximumPoolSize: 1
- another:
-  jdbcUrl: jdbc:hsqldb:mem:hsqldbTestdb
-  username: sa
-  password: 
-  maximumPoolSize: 1
+logging:
+  path: logs
+  file: demo.log
+spring:                                            
+  one:                                             
+    datasource:                                    
+      hikari:
+        driver-class-name: org.h2.Driver           
+        jdbcUrl: jdbc:h2:mem:h2Testdb                                       
+        username: sa                               
+        password:
+        maximumPoolSize: 1
+  another:                                         
+    datasource:                                    
+      hikari:                                      
+        driverClass-name: org.hsqldb.jdbcDriver    
+        jdbcUrl: jdbc:hsqldb:mem:hsqldbTestdb                                   
+        username: sa                               
+        password:
+        maximumPoolSize: 1
+  
+  
+#        jdbc-url: jdbc:postgresql://211.54.3.131:5432/gigaeyes_local_adv 
+#        username: gigaeyes
+#        password: gigaeyes#!12
+#        maximum-pool-size: 1
+#        connection-timeout: 30000
+#        connection-test-query: SELECT 0
+#        idle-timeout: 60000
+
+  
+#spring:
+#  one:
+#    datasource:
+#      hikari:      
+#        driver-class-name: org.h2.Driver
+#        url: jdbc:h2:mem:h2Testdb 
+#        username: sa
+#        password:
+#  another: 
+#    datasource:
+#      hikari:
+#        another:
+#        driverClass-name: org.hsqldb.jdbcDriver
+#        url: jdbc:hsqldb:mem:hsqldbTestdb
+#        username: sa
+#        password:

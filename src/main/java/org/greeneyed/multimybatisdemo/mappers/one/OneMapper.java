@@ -1,4 +1,4 @@
-package org.greeneyed.multimybatisdemo.mappers;
+package org.greeneyed.multimybatisdemo.mappers.one;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
